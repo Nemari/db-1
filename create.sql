@@ -1,11 +1,12 @@
 CREATE TABLE wine(
-wine_id NUMBER PRIMARY KEY,
-country_fk VARCHAR2(50)
+wine_id NUMBER NOT NULL PRIMARY KEY,
+winery_fk VARCHAR2(50) UNIQUE NOT NULL
 );
 CREATE TABLE manufacture(
-country VARCHAR2(50) PRIMARY KEY,
+winery VARCHAR2(120) PRIMARY KEY,
 province VARCHAR2(50),
-winery VARCHAR2(120)
+country VARCHAR2(50)
+
 );
 CREATE TABLE rate(
 wine_id NUMBER PRIMARY KEY,
@@ -13,8 +14,6 @@ winery VARCHAR2(120),
 variety VARCHAR2(120),
 grade FLOAT
 );
-ALTER TABLE wine
-ADD FOREIGN KEY (country_fk) REFERENCES manufacture(country); 
 
-ALTER TABLE wine
-ADD FOREIGN KEY (wine_id) REFERENCES rate(wine_id); 
+ALTER TABLE rate ADD CONSTRAINT wineID FOREIGN KEY (wine_id) REFERENCES wine(wine_id);
+ALTER TABLE manufacture ADD CONSTRAINT wineryFK FOREIGN KEY (winery) REFERENCES wine(winery_fk);
