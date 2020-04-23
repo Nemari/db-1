@@ -17,7 +17,7 @@ for rec in  cursor.fetchall():
     print(rec[0], rec[1])
 
 
-query2 = """SELECT DISTINCT (select count(province) from manufacture where province= :provincee_id)/(select count(province) from manufacture)*100 as per_cent FROM manufacture"""
+query2 = """select count(province)/(select count(province)from manufacture)*100 as Procent, province from manufacture group by province"""
 print("\nSecond query: percent wineries in California among all provinces.")
 cursor.execute(query2, provincee_id = 'California')
 
