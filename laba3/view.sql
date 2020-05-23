@@ -1,5 +1,5 @@
-CREATE VIEW CompanyType AS
-SELECT Company.wine_id, Company.winery, WineType.wine_type
+CREATE VIEW CompanyScore AS
+SELECT Company.winery, Score.score
 FROM Company
-JOIN WineType
-ON WineType.wine_id=Company.wine_id; 
+JOIN Score
+ON Company.wine_id = Score.wine_id;
