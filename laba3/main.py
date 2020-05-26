@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import cx_Oracle
 import chart_studio.plotly as py
 
-connection = cx_Oracle.connect('system', 'Nemari123', 'localhost/orcl.168.1.8')
+connection = cx_Oracle.connect('system', '12345Aa', 'DESKTOP-9JDL5ND/database')
 print("\nFirst query: average grade for each wine variety.")
 query1 = """SELECT WineType.wine_type as wine_type, AVG(Score.score)
 from Score
