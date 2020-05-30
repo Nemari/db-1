@@ -25,3 +25,16 @@ BEGIN
 END;
 EXEC UPDATE_ORDER('Mafia', 'Tempranillo-Merlot', 1); --valid input parameters
 EXEC UPDATE_ORDER('Mafia', 'Pinoft Gris', 5); --invalid input parameters
+
+CREATE OR REPLACE TRIGGER display_amount_changes 
+BEFORE UPDATE ON ORDERS
+FOR EACH ROW WHEN(new.amount < 100)
+BEGIN
+   raise_application_error(-20002, 'Amount must be over 100!!!', TRUE); 
+ END;
+
+UPDATE ORDERS
+SET amount = 5; --invalid value
+UPDATE ORDERS
+SET amount = 101; --valid value
+
