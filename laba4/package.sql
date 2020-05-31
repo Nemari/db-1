@@ -41,3 +41,5 @@ FOR i IN (
 RETURN;
 END;
 END BOTTLE;
+
+EXEC BOTTLE.UPDATE_ORDER('Mafia', 'Tempranillo-Merlot', 1000);--valid execution from package
