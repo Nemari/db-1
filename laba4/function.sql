@@ -1,3 +1,6 @@
+CREATE TYPE ReturnObject AS OBJECT(winery VARCHAR2(50), score FLOAT);
+CREATE TYPE ReturnObjectlist AS TABLE OF ReturnObject;
+
 CREATE OR REPLACE FUNCTION GET_SCORE(f_winery VARCHAR2, f_score FLOAT)
           RETURN ReturnObjectlist PIPELINED AS
 BEGIN
